@@ -52,14 +52,14 @@ Online Analytical Processing (OLAP): Almacena datos en esquemas multidimensional
 Automatiza completamente las tareas operacionales, tales como el rendimiento del clúster y la optimización de costo.
 * Ideal Usage Patterns: 
 
-a. Ejecución de informes empresariales
-b. Análisis de ventas globales para múltiples productos
-c. Historial de ventas
-d. Información juegos
-e. Análisis de tendencias sociales
-f. Medir la calidad clínica, la eficiencia operativa y el desempeño financiero en salud
+1. Ejecución de informes empresariales
+2. Análisis de ventas globales para múltiples productos
+3. Historial de ventas
+4. Información juegos
+5. Análisis de tendencias sociales
+6. Medir la calidad clínica, la eficiencia operativa y el desempeño financiero en salud
 * Anti-Patterns: 
 
-a. OLTP: Si se quiere un sistema transaccional rápido, mejor seleccionar otras bases de datos como Amazon Aurora o Amazon RDS o no transaccional como Amazon DynamoDB.
-b. Unstructured data: Si no se quiere una estrucutra, se puede usar ETL con Amazon EMR para tener los datos listos para ser cargados. 
-c. BLOB data: Si se quiere almacenar largos objetos binarios, se guardan en datos S3 para referenciarlos en RedShift. 
+1. OLTP: Si se quiere un sistema transaccional rápido, mejor seleccionar otras bases de datos como Amazon Aurora o Amazon RDS o no transaccional como Amazon DynamoDB.
+2. Unstructured data: Si no se quiere una estrucutra, se puede usar ETL con Amazon EMR para tener los datos listos para ser cargados. 
+3. BLOB data: Si se quiere almacenar largos objetos binarios, se guardan en datos S3 para referenciarlos en RedShift. 
