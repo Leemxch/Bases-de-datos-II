@@ -2,9 +2,9 @@
 ## Max Richard Lee Chung - 2019185076
 1. Explique en que consisten los siguientes conceptos:
 
-a. Data Warehouse: Depósito central de información provenientes de una o más fuentes de datos provenientes de una o más fuentes de datos. Rápido análisis de información en cantidades masivas.
-b. Data Lake: Conjunto de almacenamientos de datos con fácil acceso y salida de archivos abiertos.
-c. Data Mart: Parte o área de un almacén de datos. Alivian el trabajo por medio de "sharding"
+1. Data Warehouse: Depósito central de información provenientes de una o más fuentes de datos provenientes de una o más fuentes de datos. Rápido análisis de información en cantidades masivas.
+2. Data Lake: Conjunto de almacenamientos de datos con fácil acceso y salida de archivos abiertos.
+3. Data Mart: Parte o área de un almacén de datos. Alivian el trabajo por medio de "sharding"
 
 2. ¿De que forma se benefician las aplicaciones del uso de Columnar Storage? Explique.
 
