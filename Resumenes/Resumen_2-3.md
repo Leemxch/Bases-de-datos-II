@@ -30,23 +30,24 @@ Se implemente con tres componentes principales: una librería contectada a todos
 
 ### Refinements
 Los siguientes refinamientos es para conseguir alto rendimiento, disponibilidad y confiabilidad requerida.
-* Locality groups:
-* Compression:
-* Caching for read performance:
-* Bloom filters:
-* Commit-log implementation:
-* Speeding up tablet recovery:
-* Exploiting immutability:
+* Locality groups: Grupos de familias de colummnas. Cada grupo tiene su propio SSTable en cada tablet. Las familias de columnas segregadas que no son típicamente accedidas al mismo tiempo son más eficientes. Además, se pueden personalizar los parámetros básicos de cada grupo. Una vez creadas, se pueden leer sin acceder al disco. 
+* Compression: Los usuarios pueden optar si comprimir las SSTables o no, en donde se puede seleccionar cuál formato usar. Hay dos formas de comprimnir de forma rápido, el esquema de Bentley and MacIlroy busca comprimir strings comunes largos y un algoritmo de compresión rápida que busca repeteciones en pequeñas tablas de 16KB. 
+* Caching for read performance: Con el fin de mejorar el rendimiento, los servidores de tablas están divididas en dos niveles de almacenamiento caché. El "Scan Cache" esta en un alto nivel y se usa para leer la llave de valor de la SSTable. El "Block Cache" esta en un bajo nivel que lee los bloques de SSTable que fueron leídos desde el GFS.
+* Bloom filters: Si no se encuentra una SSTable en memoria, se puede optar a que el usuario seleccione un Bloom Filter. Un Bloom Filter permite preguntar si una SSTAble tiene la información especificada. Este proceso puede reducir el número de lecturas a disco para las operaciones de lectura y que no toquen el disco. 
+* Commit-log implementation: Usar sólo un historial de registro puede mejorar considerablemente el rendimiento pero complica mucho la recuperación de datos. La recuperación requiere muchos proceso para llevar a cabo la acción, por lo que una solución es que sólo se recuperen los registros necesarios para el funncionamiento adecuado del servidor pero se tendría que leer dependiendo de la n cantida de máquinas. Como evitamos que los registros sean duplicados, se ordenan los registros por orden numérico para leerlos de forma secuencial y lineal. Como medida de protección, se tienen 2 hilos pero sólo uno se encuentra activo. 
+* Speeding up tablet recovery: Se comprime las primeras tablas para reducir el tiempo de recuperación por la reducción de los estados descomprimidos. Luego vuelve a comprimir para eliminar restos descomprimidos y luego se sube a otro servidor. 
+* Exploiting immutability: La únca estructura mutable es el memtable. Si el SSTable se elimina, se considera como basura obsoletas. El beneficio de ser inmutables es que podemos dividir las tablas rápido y simplificado. 
 
 ### Performance Evaluation
-* Single tablet-server performance
-* Scaling
+Usando la misma cantidad de servidores (1GB en GFS de 1786 máquinas) con la misma cantidad de Bigtables con la misma cantida de clientes máquina dieron como resultado el mismo benchmark similar con respecto a la secuencia de lectura y escritura con operaciones opuestas a cada una. El benchmark de escaneo también fue similar a la secuencia de lectura pero recibió apoyo del API de Bigtable. Las lecturas aleatorias fue similar al benchmark de lectura pero los grupos contenían información en memoria que tomaban las lecturas del servidor. 
+* Single tablet-server performance: Las lecturas son mucho más lentas en servidor, sin embargo las lecturas aleatorias de memoria son más rápidas.  Si los Bigtables tienen esta configuración, se tratan de hacer bloques pequeños para tener datos más reducidos. Además, no hay mucha diferencia con las escrituras aleatorias y secuenciales, ya que se agregan al mismo historial de registro y se empacan para ser escritas en GFS.  Los escaneos secuenciales tienen mejor rendimiento que las lecturas. 
+* Scaling: Al incrementar la cantidad de sistemas, el rendimiento será mayor y efectivo, sin embargo no mejora de forma lineal ya que se llega a cierta capacidad máxima debido al CPU y/o red.
 
 ### Real Aplications
-1. Google Analytics
-2. Googel Earth
-3. Personilized Search 
+1. Google Analytics: Análisis de patrones en páginas webs. Ofrece estadísticas de uso de visitantes únicos y vistas por día. 
+2. Googel Earth: Permite al usuario navegar por la superficie de la tierra desde una interfaz de mapa. 
+3. Personilized Search: Almacena registros de búsqueda y "clicks" en Google para hacer un historial cronológico y poder visitar de nuevo esas páginas. 
 
 ### Lessons 
-
+Los largos sistemas distribuidos son vulnerables a mmuchos tipos de fallos y se cambiaron varios protocolos para contrarrestarlos. Mejor atrasar nuevas características hasta conocerlas muy bien cómo usarlas según las necesidades requeridas. También, es importante tener un buen sistema de monitoreo para poder detectar y arreglar los problemas de forma inmediata. Por último, tener un diseño simple ayuda mucho a la hora de realizar manteniiento y depuración. 
 
