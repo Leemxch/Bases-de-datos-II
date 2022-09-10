@@ -10,7 +10,7 @@
 * Eventual consistency: Si hay 1 o más bases de datos, un write ocupa n segundos.
 
 3. ¿En que consiste warm replicas y hot replicas?
-* Warm replicas: Sirven para almacenar datos que se utilizan una vez por semana, de los cuales son datos recientes pero no importantes. Ocupan bajo rendimiento de PCU y Ram pero alto consumo de disco.
+* Warm replicas: Sirven para almacenar datos que se utilizan una vez por semana, de los cuales son datos recientes pero no importantes. Ocupan bajo rendimiento de CPU y Ram pero alto consumo de disco.
 * Hot replicas: Almacena el último dato más reciente, el cual pasa cambiando conforme un nuevo dato ingrese. Ocupan alto rendimiento de CPU, RAM y disco.  
 
 4. ¿En que consiste consiste switch over y fail over?
