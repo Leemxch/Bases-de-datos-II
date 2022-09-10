@@ -1,9 +1,9 @@
 # Prueba corta #2
 ## Max Richard Lee Chung - 2019185076
 1. Explique el concepto de shard, replica y partition.
-* Shard: Contiene subgrupos de información de datos de una gran tabla en diferentes máquinas.
+* Shard: Se da cuando se quieran hacer grupos de bases de datos más pequeños de una sola base de datos grande.
 * Replica: Las réplicas son la cantidad de trabajadores que tiene un pod de Kubernetes.
-* Partition: Contiene subgrupos de información de datos en una misma máquina.
+* Partition: Se da cuando se quieran crear subgrupos de tablas de una tabla larga de datos.
 
 2. Explique la diferencia entre Strong Consistency Eventual Consistency.
 * Strong consistency: Se puede forzar. Obligar que se lea sólo si ya está escrito en ambos bases de datos (réplica o esclavo). 
