@@ -32,7 +32,7 @@ Esto puede afectar a la lectura y escritura, ya que se obliga a escribir en tres
 > Lo ideal con la lectura de datos es insertar la información en memoria principal, con el fin de nunca entrar a disco (consume tiempo tiempo de ejecución)
 >>Memory footprint: Trata de tener los datos en disco y qué tanta memoria consume la base de datos.
 
-
+![test](330381.jpg)
 
 ### Hash index
 
