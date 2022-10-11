@@ -38,7 +38,7 @@ Esto puede afectar a la lectura y escritura, ya que se obliga a escribir en tres
 > Lo ideal con la lectura de datos es insertar la información en memoria principal, con el fin de nunca entrar a disco (consume tiempo tiempo de ejecución)
 >>Memory footprint: Trata de tener los datos en disco y qué tanta memoria consume la base de datos.
 
-![Swapping](figura1.jpg)
+![Swapping](apunte1-figura1.jpg)
 
 > El consumo alto de memoria es normal, sin embargo, un alto consumo del disco no es normal (excepto en el uso de diseño y operaciones complejas) de I/O, el cual puede ocasionar un "swapping" por estar moviendo constantemente datos entre memoria y disco por las constantes peticiones de la base de datos (las bases de datos clouding no tienen dicho término).
 
