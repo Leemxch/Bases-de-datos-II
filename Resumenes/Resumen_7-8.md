@@ -1,6 +1,4 @@
-# Resumen 5-6
-
-> Google's Spanner: Becoming a SQL System
+# Resumen 7-8
 
 > Fecha de entrega: 8/11/22 6:58 pm
 
