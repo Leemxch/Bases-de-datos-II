@@ -32,6 +32,10 @@ Sería preferible mover la base de datos a algún Cloud Provider, ya que se podr
 
 Utilizando índices invertidos, se podría reducir el memory footprint por medio de la selección de palabras clave, como por ejemplo los hashtags, para poder disminuir los datos de la página a guardar mediante una asignación con la información más conocida o popular por medio de la selección de palabras relevantes o de mayor uso del sistema. Además, permite facilitar a la página recomendar o buscar archivos relacionados a la palabra dado que están ordenados de forma alfabética con su respectiva lista de archivos de dónde proviene y su clasificación o popularidad. Como los motores reciben retroalimentación de las búsquedas, se podrían mejorar la precisión de los términos en tendencia. Con respecto al Stemming, se podrían utilizar las palabras almacenadas o filtradas y clasificadas por el índice para poder seleccionar la raíz de las palabras con el fin de generar árboles menos profundos, el cual optimiza el espacio consumido ya que podrían llegar a ser muy repetitivas y que consuman mucho espacio, como por ejemplo, almacenar la palabra “comer” y eliminar “comiendo”, “comí”, “comiste”, “comeré”, entre otros.
 
+> Corrección
+La forma de hacer lo que se le solicita en la pregunta es tomar la raíz de la palabra, crear una tabla de palabras con estas, similar al Term Dictionary, con está tabla se crea una llave foránea simulando el posting list en el post.
+
+
 ## Pregunta 2 (10 pts)
 Comente, ¿Cómo afectan los índices en el rendimiento de las bases de datos relacionales?, enfoque su respuesta tanto en cómo benefician el rendimiento así como la forma en la cual lo impactan de forma negativa.
 Suponiendo que el hardware no es un problema (se puede comprar cuanto se necesite), ¿Podemos crear cuantos índices queramos o estos no tendrán mayor impacto en el rendimiento? 
